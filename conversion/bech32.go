@@ -46,7 +46,7 @@ func Bech32ifyPubKey(pkt Bech32PubKeyType, pubkey cryptotypes.PubKey) (string, e
 
 	}
 
-	return bech32.ConvertAndEncode(bech32Prefix, legacy.Cdc.MustMarshalBinaryBare(pubkey))
+	return bech32.ConvertAndEncode(bech32Prefix, legacy.Cdc.Amino.MustMarshalBinaryBare(pubkey))
 }
 
 // MustBech32ifyPubKey calls Bech32ifyPubKey except it panics on error.

@@ -61,7 +61,7 @@ func (t *tssHelpSuite) TestMsgToHashString(c *C) {
 
 func (t *tssHelpSuite) TestTssCommon_NotifyTaskDone(c *C) {
 	conversion.SetupBech32Prefix()
-	pk, err := GetPubKeyFromBech32(Bech32PubKeyTypeAccPub, "thorpub1addwnpepqtdklw8tf3anjz7nn5fly3uvq2e67w2apn560s4smmrt9e3x52nt2svmmu3")
+	pk, err := conversion.GetPubKeyFromBech32(conversion.Bech32PubKeyTypeAccPub, "thorpub1addwnpepqtdklw8tf3anjz7nn5fly3uvq2e67w2apn560s4smmrt9e3x52nt2svmmu3")
 	c.Assert(err, IsNil)
 	peerID, err := conversion.GetPeerIDFromSecp256PubKey(pk.Bytes())
 	c.Assert(err, IsNil)
@@ -72,7 +72,7 @@ func (t *tssHelpSuite) TestTssCommon_NotifyTaskDone(c *C) {
 }
 
 func (t *tssHelpSuite) TestTssCommon_processRequestMsgFromPeer(c *C) {
-	pk, err := GetPubKeyFromBech32(Bech32PubKeyTypeAccPub, "thorpub1addwnpepqtdklw8tf3anjz7nn5fly3uvq2e67w2apn560s4smmrt9e3x52nt2svmmu3")
+	pk, err := conversion.GetPubKeyFromBech32(conversion.Bech32PubKeyTypeAccPub, "thorpub1addwnpepqtdklw8tf3anjz7nn5fly3uvq2e67w2apn560s4smmrt9e3x52nt2svmmu3")
 	c.Assert(err, IsNil)
 	peerID, err := conversion.GetPeerIDFromSecp256PubKey(pk.Bytes())
 	c.Assert(err, IsNil)

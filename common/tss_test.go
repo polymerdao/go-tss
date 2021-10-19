@@ -382,7 +382,7 @@ func findSender(arr []*btss.PartyID) *btss.PartyID {
 		pk := coskey.PubKey{
 			Key: el.GetKey()[:],
 		}
-		out, _ := Bech32ifyPubKey(Bech32PubKeyTypeAccPub, &pk)
+		out, _ := conversion.Bech32ifyPubKey(conversion.Bech32PubKeyTypeAccPub, &pk)
 		if out == testSenderPubKey {
 			return el
 		}
@@ -403,7 +403,7 @@ func (t *TssTestSuite) TestProcessVerMessage(c *C) {
 }
 
 func (t *TssTestSuite) TestTssCommon(c *C) {
-	pk, err := GetPubKeyFromBech32(Bech32PubKeyTypeAccPub, "thorpub1addwnpepqtdklw8tf3anjz7nn5fly3uvq2e67w2apn560s4smmrt9e3x52nt2svmmu3")
+	pk, err := conversion.GetPubKeyFromBech32(conversion.Bech32PubKeyTypeAccPub, "thorpub1addwnpepqtdklw8tf3anjz7nn5fly3uvq2e67w2apn560s4smmrt9e3x52nt2svmmu3")
 	c.Assert(err, IsNil)
 	peerID, err := conversion.GetPeerIDFromSecp256PubKey(pk.Bytes())
 	c.Assert(err, IsNil)

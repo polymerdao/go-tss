@@ -8,7 +8,6 @@ import (
 
 	"github.com/btcsuite/btcd/btcec"
 	coskey "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
-	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/libp2p/go-libp2p-core/crypto"
 	"github.com/libp2p/go-libp2p-core/peer"
 	tcrypto "github.com/tendermint/tendermint/crypto"
@@ -17,7 +16,7 @@ import (
 
 // GetPeerIDFromPubKey get the peer.ID from bech32 format node pub key
 func GetPeerIDFromPubKey(pubkey string) (peer.ID, error) {
-	pk, err := sdk.GetPubKeyFromBech32(sdk.Bech32PubKeyTypeAccPub, pubkey)
+	pk, err := GetPubKeyFromBech32(Bech32PubKeyTypeAccPub, pubkey)
 	if err != nil {
 		return "", fmt.Errorf("fail to parse account pub key(%s): %w", pubkey, err)
 	}
@@ -84,7 +83,7 @@ func GetPubKeyFromPeerID(pID string) (string, error) {
 	pubKey := coskey.PubKey{
 		Key: rawBytes,
 	}
-	return sdk.Bech32ifyPubKey(sdk.Bech32PubKeyTypeAccPub, &pubKey)
+	return Bech32ifyPubKey(Bech32PubKeyTypeAccPub, &pubKey)
 }
 
 func GetPriKey(priKeyString string) (tcrypto.PrivKey, error) {
@@ -112,7 +111,7 @@ func GetPriKeyRawBytes(priKey tcrypto.PrivKey) ([]byte, error) {
 }
 
 func CheckKeyOnCurve(pk string) (bool, error) {
-	pubKey, err := sdk.GetPubKeyFromBech32(sdk.Bech32PubKeyTypeAccPub, pk)
+	pubKey, err := GetPubKeyFromBech32(Bech32PubKeyTypeAccPub, pk)
 	if err != nil {
 		return false, fmt.Errorf("fail to parse pub key(%s): %w", pk, err)
 	}

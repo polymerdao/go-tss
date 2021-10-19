@@ -6,7 +6,7 @@ require (
 	github.com/binance-chain/tss-lib v0.0.0-20201118045712-70b2cb4bf916
 	github.com/blang/semver v3.5.1+incompatible
 	github.com/btcsuite/btcd v0.21.0-beta
-	github.com/cosmos/cosmos-sdk v0.41.0
+	github.com/cosmos/cosmos-sdk v0.44.0
 	github.com/davidlazar/go-crypto v0.0.0-20200604182044-b73af7476f6c // indirect
 	github.com/deckarep/golang-set v1.7.1
 	github.com/decred/dcrd/dcrec/secp256k1 v1.0.3

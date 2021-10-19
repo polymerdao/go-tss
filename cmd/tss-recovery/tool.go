@@ -63,7 +63,7 @@ func getTssPubKey(x, y *big.Int) (string, sdk.AccAddress, error) {
 		Key: tssPubKey.SerializeCompressed(),
 	}
 
-	pubKey, err := sdk.Bech32ifyPubKey(sdk.Bech32PubKeyTypeAccPub, &pubKeyCompressed)
+	pubKey, err := Bech32ifyPubKey(Bech32PubKeyTypeAccPub, &pubKeyCompressed)
 	addr := sdk.AccAddress(pubKeyCompressed.Address().Bytes())
 	return pubKey, addr, err
 }

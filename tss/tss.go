@@ -3,14 +3,14 @@ package tss
 import (
 	"errors"
 	"fmt"
-	"golang.org/x/crypto/sha3"
 	"sort"
 	"strings"
 	"sync"
 
+	"golang.org/x/crypto/sha3"
+
 	bkeygen "github.com/binance-chain/tss-lib/ecdsa/keygen"
 	coskey "github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
-	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-peerstore/addr"
 	"github.com/rs/zerolog"
@@ -58,7 +58,7 @@ func NewTss(
 		Key: priKey.PubKey().Bytes()[:],
 	}
 
-	pubKey, err := sdk.Bech32ifyPubKey(sdk.Bech32PubKeyTypeAccPub, &pk)
+	pubKey, err := Bech32ifyPubKey(Bech32PubKeyTypeAccPub, &pk)
 	if err != nil {
 		return nil, fmt.Errorf("fail to genearte the key: %w", err)
 	}
